@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Rust掲示板</title>
+</head>
+
+<body>
+  <h1>🦀 Rustで作るシンプル掲示板</h1>
+
+  <form method="post" action="/">
+    <label>名前: <input type="text" name="name" required></label><br><br>
+    <label>メッセージ:<br>
+      <textarea name="message" rows="4" cols="40" required></textarea>
+    </label><br><br>
+    <button type="submit">投稿する</button>
+  </form>
+
+  <h2>📬 投稿一覧</h2>
+  {% for post in posts %}
+  <div style="border-bottom: 1px solid #ccc; padding: 10px 0;">
+    <strong>{{ post.name }}</strong><br>
+    {{ post.message }}<br>
+    <small>{{ post.timestamp }}</small><br>
+    <form method="get" action="/edit/{{ post.id }}" style="display:inline">
+      <button>編集</button>
+    </form>
+    <form method="post" action="/delete/{{ post.id }}" style="display:inline" onsubmit="return confirm('削除しますか？');">
+      <button>削除</button>
+    </form>
+  </div>
+  {% else %}
+  <p>まだ投稿はありません。</p>
+  {% endfor %}
+</body>
+
+</html>

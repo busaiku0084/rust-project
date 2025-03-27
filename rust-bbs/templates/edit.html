@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>投稿の編集</title>
+</head>
+
+<body>
+  <h1>✏️ 投稿を編集</h1>
+  <form method="post" action="/edit/{{ post.id }}">
+    <label>名前: <input type="text" name="name" value="{{ post.name }}" required></label><br><br>
+    <label>メッセージ:<br>
+      <textarea name="message" rows="4" cols="40" required>{{ post.message }}</textarea>
+    </label><br><br>
+    <button type="submit">更新</button>
+  </form>
+  <p><a href="/">戻る</a></p>
+</body>
+
+</html>
